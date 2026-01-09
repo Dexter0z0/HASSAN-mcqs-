@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Biochemistry MCQ Practice - All 247 Questions</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .canvas-area {
+            flex: 3;
+            min-width: 400px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .topic-list {
+            list-style-type: none;
+            margin-top: 15px;
+        }
+        
+        .topic-item {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 4px solid #3498db;
+            font-size: 0.95rem;
+        }
+        
+        .topic-item:hover {
+            background-color: #e8f4fc;
+            transform: translateX(5px);
+        }
+        
+        .topic-item.active {
+            background-color: #d6eaf8;
+            border-left-color: #2980b9;
+            font-weight: 600;
+        }
+        
+        .topic-item .count {
+            float: right;
+            background-color: #3498db;
+            color: white;
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-size: 0.8rem;
+        }
+        
+        .progress-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #2ecc71;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            text-align: center;
+        }
+        
+        .question-container {
+            margin-bottom: 25px;
+        }
+        
+        .question-number {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .options-container {
+            margin: 20px 0;
+        }
+        
+        .option {
+            padding: 16px;
+            margin-bottom: 12px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .option:hover {
+            background-color: #f0f7ff;
+            border-color: #a0c4ff;
+        }
+        
+        .option.selected {
+            border-color: #3498db;
+            background-color: #e8f4fc;
+        }
+        
+        .option.correct {
+            border-color: #2ecc71;
+            background-color: #d5f4e6;
+        }
+        
+        .option.incorrect {
+            border-color: #e74c3c;
+            background-color: #fadbd8;
+        }
+        
+        .option-label {
+            display: inline-block;
+            width: 36px;
+            font-weight: 600;
+            margin-right: 15px;
+            flex-shrink: 0;
+            text-align: center;
+            padding-top: 2px;
+        }
+        
+        .option-text {
+            flex-grow: 1;
+        }
+        
+        .feedback-section {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            display: none;
+        }
+        
+        .feedback-section.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .feedback-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        
+        .feedback-title .icon {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .feedback-title.correct {
+            color: #27ae60;
+        }
+        
+        .feedback-title.incorrect {
+            color: #e74c3c;
+        }
+        
+        .correct-answer {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            border-left: 4px solid #2ecc71;
+            font-weight: 500;
+        }
+        
+        .explanation {
+            margin-top: 15px;
+            line-height: 1.6;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        
+        .btn-prev {
+            background-color: #ecf0f1;
+            color: #7f8c8d;
+        }
+        
+        .btn-prev:hover {
+            background-color: #d5dbdd;
+        }
+        
+        .btn-next {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .btn-next:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-reset {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .btn-reset:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .stat-box {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            flex: 1;
+            margin: 0 5px;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        .correct-stat {
+            color: #2ecc71;
+        }
+        
+        .incorrect-stat {
+            color: #e74c3c;
+        }
+        
+        .skipped-stat {
+            color: #f39c12;
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar, .canvas-area {
+                width: 100%;
+                max-height: none;
+            }
+            
+            .sidebar {
+                max-height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .stat-box {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Complete Biochemistry MCQ Practice</h1>
+            <p class="subtitle">Interactive practice with all 247 biochemistry MCQs. Immediate feedback provided after selecting an answer.</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="sidebar">
+                <h3>Topics</h3>
+                <ul class="topic-list" id="topicList">
+                    <!-- Topics will be dynamically added here -->
+                </ul>
+                
+                <div class="progress-section">
+                    <h4>Progress</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0/0 questions completed</div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-value correct-stat" id="correctCount">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value incorrect-stat" id="incorrectCount">0</div>
+                        <div class="stat-label">Incorrect</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value skipped-stat" id="skippedCount">0</div>
+                        <div class="stat-label">Unanswered</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    <button class="btn btn-reset" id="resetBtn" style="flex: 1;">Reset Progress</button>
+                </div>
+            </div>
+            
+            <div class="canvas-area">
+                <div class="question-container">
+                    <div class="question-number" id="questionNumber">Question 1 of 10</div>
+                    <div class="question-text" id="questionText">
+                        <!-- Question text will be loaded here -->
+                    </div>
+                    
+                    <div class="options-container" id="optionsContainer">
+                        <!-- Options will be dynamically added here -->
+                    </div>
+                    
+                    <div class="feedback-section" id="feedbackSection">
+                        <div class="feedback-title" id="feedbackTitle">
+                            <span class="icon">✓</span> Correct Answer
+                        </div>
+                        <div class="correct-answer" id="correctAnswer">
+                            <!-- Correct answer will be shown here -->
+                        </div>
+                        <div class="explanation" id="explanation">
+                            <!-- Explanation will be shown here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn btn-prev" id="prevBtn" disabled>Previous</button>
+                    <button class="btn btn-next" id="nextBtn">Next Question</button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Complete Biochemistry MCQ Practice Tool | All 247 questions from organized_biochemistry_mcqs.pdf and organized_biochemistry_mcqs2.pdf</p>
+        </footer>
+    </div>
+
+    <script>
+        // Complete Biochemistry MCQ Data - ALL QUESTIONS FROM BOTH FILES
+        const biochemistryMCQs = {
+            "nucleotide": {
+                title: "I. Nucleotide Metabolism",
+                questions: [
+                    {
+                        question: "Biosynthesis of nucleotides. Nucleic acids are:",
+                        options: [
+                            "Polymers consisting of amino acids",
+                            "Polymers consisting of nucleotides",
+                            "Polymers consisting of nucleosides",
+                            "Polymers consisting of nitrogenous bases",
+                            "Polymers consisting of glucose"
+                        ],
+                        correct: 1,
+                        explanation: "Nucleic acids (DNA and RNA) are polymers of nucleotides. Each nucleotide consists of a nitrogenous base, a pentose sugar, and a phosphate group. Nucleotides are the building blocks of nucleic acids."
+                    },
+                    {
+                        question: "For what are nucleotides used in the organism?",
+                        options: [
+                            "To break down carbohydrates",
+                            "To activate gastric peptidases",
+                            "For the filtration process in the kidney",
+                            "To build nucleic acids",
+                            "For the synthesis of phosphoric acid"
+                        ],
+                        correct: 3,
+                        explanation: "Nucleotides are primarily used as building blocks for nucleic acids (DNA and RNA). They also serve as energy carriers (ATP), components of coenzymes, and intracellular signaling molecules."
+                    },
+                    {
+                        question: "The active form of ribose involved in purine synthesis:",
+                        options: [
+                            "2-phosphoribosyl-1-pyrophosphate",
+                            "5-phosphoribosyl-1-pyrophosphate",
+                            "1-phosphoribosyl-2-pyrophosphate",
+                            "3-phosphoribosyl-1-pyrophosphate",
+                            "4-phosphoribosyl-1-pyrophosphate"
+                        ],
+                        correct: 1,
+                        explanation: "5-phosphoribosyl-1-pyrophosphate (PRPP) is the activated form of ribose-5-phosphate that serves as the starting material for both purine and pyrimidine nucleotide synthesis. It provides the ribose phosphate moiety for nucleotide formation."
+                    },
+                    {
+                        question: "Amino acids involved in the synthesis of purine nucleotides:",
+                        options: [
+                            "Alanine, glycine, proline",
+                            "Glycine, aspartate, glutamine",
+                            "Aspartic acid, glutamate, serine",
+                            "Lysine, arginine, methionine",
+                            "Glutamine, tyrosine, phenylalanine"
+                        ],
+                        correct: 1,
+                        explanation: "Glycine provides the carbon skeleton for the purine ring. Aspartate contributes one nitrogen atom. Glutamine provides two nitrogen atoms. These three amino acids are directly incorporated into the purine ring structure during de novo synthesis."
+                    },
+                    {
+                        question: "What is the final product of purine degradation?",
+                        options: [
+                            "Guanine",
+                            "Xanthine",
+                            "Hypoxanthine",
+                            "Uric acid",
+                            "Ammonia"
+                        ],
+                        correct: 3,
+                        explanation: "In humans, the final product of purine degradation is uric acid. Other mammals further degrade uric acid to allantoin, but humans lack the enzyme uricase. Elevated uric acid levels can lead to gout."
+                    },
+                    {
+                        question: "Which sign is observed in ornithine transcarbamylase deficiency but not in carbamoyl phosphate synthetase deficiency?",
+                        options: [
+                            "Brain edema",
+                            "Decrease in ATP levels",
+                            "Hyperammonemia",
+                            "Increase in plasma glutamine",
+                            "Orotaciduria"
+                        ],
+                        correct: 4,
+                        explanation: "Ornithine transcarbamylase (OTC) deficiency leads to accumulation of carbamoyl phosphate, which enters the cytosol and stimulates pyrimidine synthesis, resulting in orotic aciduria. This does not occur in carbamoyl phosphate synthetase deficiency."
+                    },
+                    {
+                        question: "When does orotic aciduria develop?",
+                        options: [
+                            "When purine nucleotide catabolism is disturbed",
+                            "When pyrimidine nucleotide catabolism is disturbed",
+                            "When purine nucleotide synthesis reactions are disturbed",
+                            "When pyrimidine nucleotide synthesis is disturbed",
+                            "When the pentose phosphate pathway is disturbed"
+                        ],
+                        correct: 3,
+                        explanation: "Orotic aciduria results from defects in pyrimidine synthesis, specifically deficiencies in orotate phosphoribosyltransferase or orotidylate decarboxylase. This leads to accumulation of orotic acid in urine."
+                    },
+                    {
+                        question: "The disease that develops due to the accumulation of uric acid is:",
+                        options: [
+                            "Rheumatism",
+                            "Gout",
+                            "Pellagra",
+                            "Cretinism",
+                            "Jaundice"
+                        ],
+                        correct: 1,
+                        explanation: "Gout is caused by hyperuricemia leading to deposition of monosodium urate crystals in joints and tissues. This results in acute inflammatory arthritis, tophi formation, and potential kidney damage."
+                    },
+                    {
+                        question: "Patients with Lesch-Nyhan syndrome exhibit hyperuricemia, which indicates increased purine nucleotide biosynthesis and significantly decreased hypoxanthine-guanine phosphoribosyltransferase (HGPRT) levels. Hyperuricemia can be explained by the decrease of which purine biosynthesis regulator?",
+                        options: [
+                            "ATP",
+                            "GTP",
+                            "Glutamine",
+                            "+IMP",
+                            "PRPP"
+                        ],
+                        correct: 3,
+                        explanation: "In Lesch-Nyhan syndrome, HGPRT deficiency impairs the salvage pathway, leading to PRPP accumulation. PRPP stimulates amidophosphoribosyltransferase, the rate-limiting enzyme of purine synthesis, resulting in overproduction of purines and hyperuricemia."
+                    },
+                    {
+                        question: "The anticancer drug 6-mercaptopurine is inactivated by xanthine oxidase. A cancer patient taking 6-mercaptopurine develops hyperuricemia, and the doctor prescribes allopurinol. What effect does allopurinol have on the activity of 6-mercaptopurine?",
+                        options: [
+                            "Enhances the inactivation of 6-mercaptopurine",
+                            "Increases the excretion of 6-mercaptopurine as uric acid",
+                            "Increases its retention and potency in the body",
+                            "Reduces the inhibition of PRPP-glutamyl-amidotransferase",
+                            "Increases adenosine deaminase activity"
+                        ],
+                        correct: 2,
+                        explanation: "Allopurinol inhibits xanthine oxidase, which normally inactivates 6-mercaptopurine. By inhibiting this enzyme, allopurinol increases the retention and potency of 6-mercaptopurine, requiring dose adjustment to avoid toxicity."
+                    }
+                ]
+            },
+            "renal": {
+                title: "II. Renal Biochemistry and Urinalysis",
+                questions: [
+                    {
+                        question: "The color of the urine of a healthy person depends on the presence of the following pigments:",
+                        options: [
+                            "Stercobilin, urochrome, uroerythrin",
+                            "Urobilin, urozein, bilirubin",
+                            "Urochrome, uroerythrin, hemoglobin",
+                            "Uroerythrin, biliverdin, mesobilinogen",
+                            "Bilirubin, biliverdin, urochrome"
+                        ],
+                        correct: 0,
+                        explanation: "Normal urine color is primarily due to urochrome (a yellow pigment derived from urobilinogen), with small amounts of uroerythrin and stercobilin. Hemoglobin and bilirubin are pathological pigments."
+                    },
+                    {
+                        question: "Pathological components of urine:",
+                        options: [
+                            "Protein, glucose, bilirubin",
+                            "Uric acid, urea, glucose",
+                            "Ammonia, bilirubin, urea",
+                            "Sulfates, urea, creatinine",
+                            "Creatinine, uric acid, protein"
+                        ],
+                        correct: 0,
+                        explanation: "Protein (proteinuria), glucose (glycosuria), and bilirubin (bilirubinuria) are pathological findings in urine. Urea, creatinine, uric acid, and ammonia are normal urinary constituents in healthy individuals."
+                    },
+                    {
+                        question: "What is the term for urine output of 3.5 liters per day?",
+                        options: [
+                            "Proteinuria",
+                            "Polyuria",
+                            "Oliguria",
+                            "Anuria",
+                            "Bilirubinuria"
+                        ],
+                        correct: 1,
+                        explanation: "Polyuria is the production of abnormally large volumes of dilute urine (>2.5 L/day in adults). Normal urine output is about 1-2 L/day. Oliguria is <400 mL/day, and anuria is <100 mL/day."
+                    },
+                    {
+                        question: "The most accurate indicator for evaluating kidney clearance:",
+                        options: [
+                            "Creatinine",
+                            "Bilirubin",
+                            "Glucose",
+                            "Uric acid",
+                            "Urea"
+                        ],
+                        correct: 0,
+                        explanation: "Creatinine clearance is the most accurate clinical indicator of glomerular filtration rate (GFR). Creatinine is produced at a constant rate from muscle metabolism, freely filtered, and not reabsorbed (though small amounts are secreted)."
+                    },
+                    {
+                        question: "Why is creatinine a suitable marker for kidney clearance?",
+                        options: [
+                            "It is 100% reabsorbed",
+                            "20% is secreted",
+                            "It is filtered and not reabsorbed",
+                            "It is degraded in the liver",
+                            "It is synthesized in the kidney"
+                        ],
+                        correct: 2,
+                        explanation: "Creatinine is an ideal marker for GFR because it is freely filtered at the glomerulus, not reabsorbed, and only minimally secreted. Its production rate is relatively constant, related to muscle mass."
+                    },
+                    {
+                        question: "What is the normal glomerular filtration rate in humans?",
+                        options: [
+                            "120 ml/min",
+                            "400 ml/min",
+                            "160 ml/min",
+                            "60 ml/min",
+                            "40 ml/min"
+                        ],
+                        correct: 0,
+                        explanation: "Normal GFR is approximately 120-130 mL/min/1.73m² in young healthy adults. This represents the total filtration rate of both kidneys and is a key measure of renal function."
+                    },
+                    {
+                        question: "Increased permeability of kidney membranes is observed in:",
+                        options: [
+                            "Proteinuria",
+                            "Ketonuria",
+                            "Polyuria",
+                            "Oliguria",
+                            "Glucosuria"
+                        ],
+                        correct: 0,
+                        explanation: "Proteinuria indicates increased glomerular permeability, allowing proteins (especially albumin) to pass into the filtrate. This occurs in glomerular diseases like nephrotic syndrome."
+                    },
+                    {
+                        question: "Ketonuria is observed:",
+                        options: [
+                            "During long-term high-carbohydrate diet",
+                            "During prolonged fasting",
+                            "In diabetes mellitus",
+                            "During daily protein deficiency",
+                            "When the diet is rich in vitamins"
+                        ],
+                        correct: 2,
+                        explanation: "Ketonuria occurs when ketone bodies (acetoacetate, β-hydroxybutyrate, acetone) are produced in excess, typically in uncontrolled diabetes mellitus or prolonged starvation, and exceed renal reabsorption capacity."
+                    },
+                    {
+                        question: "A 65-year-old patient, thin, with normal creatinine levels. Which marker most accurately indicates early decrease in kidney function?",
+                        options: [
+                            "Creatinine",
+                            "Urea",
+                            "Cystatin C",
+                            "Potassium",
+                            "LDH"
+                        ],
+                        correct: 2,
+                        explanation: "Cystatin C is a more sensitive marker than creatinine for early renal impairment, especially in elderly or malnourished patients with low muscle mass. It is produced at a constant rate by all nucleated cells."
+                    },
+                    {
+                        question: "A 55-year-old patient with chronic kidney disease has decreased muscle mass. Laboratory tests show normal serum creatinine but elevated cystatin C. How can this be explained?",
+                        options: [
+                            "Creatinine is sensitive to early glomerular filtration decline",
+                            "Elevated cystatin C reflects decreased filtration despite normal creatinine",
+                            "Cystatin C increases only in tubular damage",
+                            "Creatinine is always higher than cystatin C in chronic kidney disease",
+                            "Cystatin C depends on muscle mass"
+                        ],
+                        correct: 1,
+                        explanation: "Cystatin C detects GFR reduction earlier than creatinine, especially in patients with reduced muscle mass. Normal creatinine in this context is misleading due to decreased production from muscle wasting."
+                    },
+                    {
+                        question: "What property of cystatin C distinguishes it from creatinine as a marker of kidney function?",
+                        options: [
+                            "It is filtered by glomeruli and actively secreted by renal tubules",
+                            "Its concentration depends on diet and muscle mass",
+                            "It is synthesized in constant amounts by all nucleated cells",
+                            "It increases only in acute renal failure",
+                            "It cannot be used to assess glomerular filtration rate"
+                        ],
+                        correct: 2,
+                        explanation: "Cystatin C is produced at a constant rate by all nucleated cells, unlike creatinine which depends on muscle mass. This makes cystatin C less variable and more sensitive for early GFR changes."
+                    },
+                    {
+                        question: "A 55-year-old female patient with chronic kidney disease has low muscle mass. Laboratory tests show normal serum creatinine but elevated cystatin C. What is the explanation?",
+                        options: [
+                            "Creatinine is more sensitive to early glomerular filtration decline",
+                            "Cystatin C increase reflects filtration decrease despite normal creatinine",
+                            "Cystatin C rises only with tubular damage",
+                            "Creatinine is always higher than cystatin C in CKD",
+                            "Cystatin C depends on muscle mass"
+                        ],
+                        correct: 1,
+                        explanation: "Same as previous question - cystatin C is more sensitive for detecting early GFR reduction, especially in patients with reduced muscle mass where creatinine production is decreased."
+                    },
+                    {
+                        question: "Which property of cystatin C distinguishes it from creatinine as a renal function marker?",
+                        options: [
+                            "Filtered by glomeruli and actively secreted by tubules",
+                            "Concentration depends on diet and muscle mass",
+                            "Constant synthesis by all nucleated cells",
+                            "Elevation only in acute renal failure",
+                            "Cannot be used to estimate GFR"
+                        ],
+                        correct: 2,
+                        explanation: "Cystatin C is produced at a constant rate by all nucleated cells, making it independent of muscle mass, age, sex, or nutritional status - advantages over creatinine."
+                    },
+                    {
+                        question: "A 65-year-old, cachectic patient with normal creatinine. Which marker most reliably indicates early renal function decline?",
+                        options: [
+                            "Creatinine",
+                            "Urea",
+                            "Cystatin C",
+                            "Potassium",
+                            "LDH"
+                        ],
+                        correct: 2,
+                        explanation: "In cachectic patients with low muscle mass, creatinine is unreliable. Cystatin C, produced constantly by all cells, better reflects true GFR and detects early renal impairment."
+                    }
+                ]
+            },
+            "amino_acids": {
+                title: "III. Amino Acid and Protein Metabolism",
+                questions: [
+                    {
+                        question: "Hydrochloric acid is necessary for:",
+                        options: [
+                            "Denaturation of proteins, activation of pepsinogen",
+                            "Neutralization of bacteria, activation of trypsinogen",
+                            "Increasing the required pH level, emulsification of fats",
+                            "Normal functioning of the gastric mucosa",
+                            "Putrefaction and denaturation of proteins"
+                        ],
+                        correct: 0,
+                        explanation: "Gastric HCl denatures dietary proteins, making them more accessible to proteolytic enzymes. It also activates pepsinogen to pepsin (optimal pH 1.5-2.0) and provides an acidic environment for pepsin activity."
+                    },
+                    {
+                        question: "Hydrochloric acid is needed to activate which enzyme?",
+                        options: [
+                            "Pepsinogen",
+                            "Amylase",
+                            "Lipase",
+                            "Transketolase",
+                            "Trypsinogen"
+                        ],
+                        correct: 0,
+                        explanation: "HCl activates pepsinogen to pepsin through cleavage of an inhibitory peptide. This is an example of zymogen activation. Trypsinogen is activated by enteropeptidase in the small intestine."
+                    },
+                    {
+                        question: "Which amino acid is the ammonia carrier for urea formation?",
+                        options: [
+                            "Alanine",
+                            "Glutamate",
+                            "Glycine",
+                            "Ornithine",
+                            "Methionine"
+                        ],
+                        correct: 1,
+                        explanation: "Glutamate serves as the major ammonia carrier in tissues. It accepts ammonia to form glutamine via glutamine synthetase. In the liver, glutaminase releases ammonia for urea synthesis."
+                    },
+                    {
+                        question: "Which amino acid is not synthesized in the body and must be obtained from food?",
+                        options: [
+                            "Leucine",
+                            "Glutamate",
+                            "Aspartate",
+                            "Glycine",
+                            "Proline"
+                        ],
+                        correct: 0,
+                        explanation: "Leucine is an essential (indispensable) amino acid that cannot be synthesized by humans and must be obtained from the diet. The other options are non-essential amino acids that can be synthesized."
+                    },
+                    {
+                        question: "Which of the following amino acids is indispensable (essential)?",
+                        options: [
+                            "Glutamate",
+                            "Alanine",
+                            "Phenylalanine",
+                            "Aspartate",
+                            "Tyrosine"
+                        ],
+                        correct: 2,
+                        explanation: "Phenylalanine is an essential amino acid. Humans cannot synthesize the aromatic ring structure. Tyrosine can be synthesized from phenylalanine, so it's conditionally essential when phenylalanine intake is limited."
+                    },
+                    {
+                        question: "The most abundant AMINO ACIDS in collagen are:",
+                        options: [
+                            "Glycine, proline, and hydroxyproline",
+                            "Alanine, glycine, tryptophan",
+                            "Cysteine, proline, methionine",
+                            "Serine, proline, lysine",
+                            "Tyrosine, cysteine, glycine"
+                        ],
+                        correct: 0,
+                        explanation: "Collagen is rich in glycine (33%), proline, and hydroxyproline. Glycine allows tight packing of collagen helices. Proline and hydroxyproline provide stability through ring structures that limit rotation."
+                    },
+                    {
+                        question: "Which amino acid is necessary for creatine synthesis?",
+                        options: [
+                            "Cysteine",
+                            "Methionine",
+                            "Serine",
+                            "Putrescine",
+                            "Threonine"
+                        ],
+                        correct: 1,
+                        explanation: "Creatine synthesis requires glycine, arginine, and methionine (as S-adenosylmethionine for methylation). Methionine provides the methyl group for converting guanidinoacetate to creatine."
+                    },
+                    {
+                        question: "Creatine phosphate in muscles is an additional source of energy because:",
+                        options: [
+                            "Through the reverse reaction, creatine kinase rapidly provides ATP formation from ADP",
+                            "It does not accumulate in large amounts",
+                            "It provides more energy than ATP",
+                            "It is necessary for muscle protein breakdown",
+                            "It is necessary for muscle glycogen synthesis"
+                        ],
+                        correct: 0,
+                        explanation: "Creatine phosphate serves as a high-energy phosphate reservoir. During muscle contraction, creatine kinase transfers phosphate from creatine phosphate to ADP, rapidly regenerating ATP."
+                    },
+                    {
+                        question: "Pathological components of gastric juice include:",
+                        options: [
+                            "Volatile fatty acids, bile, protein",
+                            "Bile, blood, lactic acid",
+                            "Mucins, lactic acid, blood",
+                            "Hydrochloric acid, blood, bile",
+                            "Blood, protein, glucose"
+                        ],
+                        correct: 1,
+                        explanation: "Bile (from duodenogastric reflux), blood (from bleeding ulcers or erosions), and lactic acid (from gastric carcinoma or stagnation) are pathological findings in gastric juice."
+                    },
+                    {
+                        question: "Which of the following enzymes is involved in amino acid transamination?",
+                        options: [
+                            "Aminotransferase",
+                            "Decarboxylase",
+                            "Ligase",
+                            "Hydrolase",
+                            "Lyase"
+                        ],
+                        correct: 0,
+                        explanation: "Aminotransferases (transaminases) catalyze transfer of amino groups from amino acids to α-keto acids. AST and ALT are important clinical examples, with elevated levels indicating liver or muscle damage."
+                    },
+                    {
+                        question: "Which of the following amino acids undergoes oxidative deamination?",
+                        options: [
+                            "Serine",
+                            "Tyrosine",
+                            "Histidine",
+                            "Glutamic acid",
+                            "Methionine"
+                        ],
+                        correct: 3,
+                        explanation: "Glutamate undergoes oxidative deamination via glutamate dehydrogenase, producing α-ketoglutarate and ammonia. This reversible reaction is a key link between amino acid and carbohydrate metabolism."
+                    },
+                    {
+                        question: "The parents of a child with phenylketonuria noticed delayed psychomotor development, seizures, and a distinct 'mouse-like' odor of the skin. Which enzyme deficiency is likely?",
+                        options: [
+                            "Phenylalanine hydroxylase",
+                            "Ornithine transcarbamylase",
+                            "Glutamate dehydrogenase",
+                            "Tyrosinase",
+                            "Aspartate aminotransferase"
+                        ],
+                        correct: 0,
+                        explanation: "Phenylketonuria (PKU) results from phenylalanine hydroxylase deficiency, preventing conversion of phenylalanine to tyrosine. Accumulation of phenylalanine and its metabolites causes neurological damage and musty odor."
+                    },
+                    {
+                        question: "Laboratory examination of a child revealed increased levels of leucine, valine, isoleucine, and their keto derivatives in blood and urine. A distinct 'maple syrup' odor was detected in urine. Deficiency of which enzyme is characteristic of this disease?",
+                        options: [
+                            "Aminotransferase",
+                            "Branched-chain amino acid dehydrogenases",
+                            "Glucose-6-phosphatase",
+                            "Phosphofructokinase",
+                            "Phosphofructomutase"
+                        ],
+                        correct: 1,
+                        explanation: "Maple syrup urine disease results from deficiency of branched-chain α-keto acid dehydrogenase complex, impairing degradation of leucine, isoleucine, and valine. Accumulation causes neurological damage and characteristic odor."
+                    },
+                    {
+                        question: "Depression and emotional disorders are consequences of deficiency of dopamine, noradrenaline, serotonin, and other biogenic amines in the brain. Their increased levels in synapses can be achieved by antidepressants inhibiting which enzyme?",
+                        options: [
+                            "Monoamine oxidase",
+                            "Diamine oxidase",
+                            "L-amino acid oxidases",
+                            "D-amino acid oxidases",
+                            "Phenylalanine-4-monoxygenase"
+                        ],
+                        correct: 0,
+                        explanation: "Monoamine oxidase (MAO) inhibitors increase synaptic levels of neurotransmitters by preventing their degradation. MAO-A preferentially deaminates serotonin and norepinephrine; MAO-B deaminates dopamine."
+                    },
+                    {
+                        question: "Depressive states are mainly associated with a decrease in serotonin levels in nerve cells. Disturbance of metabolism of which amino acid is implicated?",
+                        options: [
+                            "Glutamate",
+                            "Tryptophan",
+                            "Alanine",
+                            "Valine",
+                            "Isoleucine"
+                        ],
+                        correct: 1,
+                        explanation: "Serotonin is synthesized from tryptophan via 5-hydroxytryptophan. Tryptophan availability can limit serotonin synthesis. Low serotonin is implicated in depression, leading to SSRIs as treatment."
+                    },
+                    {
+                        question: "In which organ does urea synthesis occur?",
+                        options: [
+                            "Kidney",
+                            "Liver",
+                            "Adrenal glands",
+                            "Brain",
+                            "Pancreas"
+                        ],
+                        correct: 1,
+                        explanation: "The urea cycle occurs primarily in the liver, with some enzymes in mitochondria and cytoplasm. The kidneys excrete urea but do not synthesize it. Liver failure leads to hyperammonemia."
+                    },
+                    {
+                        question: "Where does detoxification of toxic substances produced from protein putrefaction take place?",
+                        options: [
+                            "Stomach",
+                            "Blood",
+                            "Liver",
+                            "Pancreas",
+                            "Spleen"
+                        ],
+                        correct: 2,
+                        explanation: "The liver is the primary detoxification organ, metabolizing ammonia (via urea cycle), drugs, toxins, and metabolic waste products. It contains phase I (oxidation) and phase II (conjugation) enzymes."
+                    },
+                    {
+                        question: "Two days after normal full-term birth, a newborn developed hyperventilation, cerebral edema, and coma. Urine analysis showed elevated glutamine and orotic acid levels. Blood urea was below normal. Deficiency of which enzyme is likely in this child?",
+                        options: [
+                            "Cytoplasmic glutaminase",
+                            "Cytoplasmic carbamoyl phosphate synthetase",
+                            "Cytoplasmic orotidine decarboxylase",
+                            "Mitochondrial carbamoyl phosphate synthetase",
+                            "Mitochondrial ornithine transcarbamylase"
+                        ],
+                        correct: 4,
+                        explanation: "Ornithine transcarbamylase (OTC) deficiency, an X-linked disorder, causes hyperammonemia with increased glutamine (ammonia detoxification) and orotic acid (pyrimidine synthesis stimulation from accumulated carbamoyl phosphate)."
+                    },
+                    {
+                        question: "A 3-week-old infant exhibited periodic vomiting, seizures, and hyperventilation. Between seizures, the infant showed lethargy. Blood levels of citrulline and urea were low. What other changes typical of urea cycle disorder are expected?",
+                        options: [
+                            "Blood pH decreased, urinary uric acid crystals decreased",
+                            "Blood pH decreased, lactic acid increased",
+                            "Increased glutamine in blood and increased orotic acid in urine",
+                            "Increased ammonia and urea in urine",
+                            "Megaloblastic anemia, increased methylmalonic acid"
+                        ],
+                        correct: 2,
+                        explanation: "Urea cycle disorders cause hyperammonemia, leading to increased glutamine (from ammonia detoxification) and orotic aciduria (from carbamoyl phosphate diversion to pyrimidine synthesis)."
+                    },
+                    {
+                        question: "A 62-year-old man undergoing treatment for tuberculosis developed microcytic hypochromic anemia. Ferritin levels are elevated, with marked sideroblastosis. Which of the following enzyme activities is directly responsible for the anemia in this man?",
+                        options: [
+                            "Cytochrome oxidase",
+                            "Cytochrome P450 oxidase",
+                            "Pyruvate dehydrogenase",
+                            "δ-Aminolevulinic acid synthase",
+                            "Lysyl oxidase"
+                        ],
+                        correct: 3,
+                        explanation: "Isoniazid for tuberculosis can cause vitamin B6 deficiency, which is a cofactor for δ-aminolevulinic acid synthase (ALAS), the rate-limiting enzyme in heme synthesis. Deficiency causes sideroblastic anemia with iron overload."
+                    },
+                    {
+                        question: "Under what condition is heme synthesis stimulated?",
+                        options: [
+                            "With increased blood glucose levels",
+                            "With decreased blood glucose levels",
+                            "When the need for hemoglobin and cytochromes increases",
+                            "With increased bilirubin levels",
+                            "With increased amino acids"
+                        ],
+                        correct: 2,
+                        explanation: "Heme synthesis increases during erythropoiesis (to make hemoglobin), cytochrome production, or increased turnover of heme proteins. Feedback inhibition by heme regulates the pathway via ALAS inhibition."
+                    },
+                    {
+                        question: "To confirm a diagnosis of porphyria, which of the following metabolites' levels in urine are important to be elevated?",
+                        options: [
+                            "Urobilinogen and bilirubin",
+                            "Δ-Aminolevulinic acid and porphobilinogen",
+                            "Biliverdin and stercobilin",
+                            "Urobilin and urobilinogen",
+                            "Δ-Aminolevulinic acid and urobilinogen"
+                        ],
+                        correct: 1,
+                        explanation: "Acute intermittent porphyria is diagnosed by elevated urinary δ-aminolevulinic acid (ALA) and porphobilinogen (PBG) during attacks. These are porphyrin precursors that accumulate due to porphobilinogen deaminase deficiency."
+                    },
+                    {
+                        question: "A 65-year-old woman was admitted to the emergency room with a hand fracture. Physical examination revealed multiple bruises and perifollicular hemorrhages, periodontitis, and gum pain. Her diet mainly consists of coffee, sweet pastries, and regular bread. Laboratory results showed mild microcytic anemia. Which of the enzymes involved in collagen synthesis listed below has decreased activity in this patient?",
+                        options: [
+                            "Homocysteine methyltransferase",
+                            "γ-Glutamyl carboxylase",
+                            "Dihydrofolate reductase",
+                            "δ-Aminolevulinic acid synthetase",
+                            "Prolyl hydroxylase"
+                        ],
+                        correct: 4,
+                        explanation: "This describes scurvy (vitamin C deficiency). Vitamin C is a cofactor for prolyl and lysyl hydroxylases in collagen synthesis. Deficiency causes defective collagen, leading to bleeding gums, bruising, poor wound healing."
+                    },
+                    {
+                        question: "When determining the activity of aspartate transaminase and alanine transaminase in the patient's blood serum, increased activity of aspartate transaminase was detected along with an increased de Ritis ratio. Which organ is affected in this case?",
+                        options: [
+                            "Heart",
+                            "Pancreas",
+                            "Brain",
+                            "Kidneys",
+                            "Salivary glands"
+                        ],
+                        correct: 0,
+                        explanation: "An increased AST/ALT ratio (de Ritis ratio >2) suggests cardiac damage (myocardial infarction) rather than liver damage. AST is more concentrated in cardiac muscle, while ALT is more liver-specific."
+                    },
+                    {
+                        question: "To which class do enzymes involved in xenobiotic conjugation reactions belong?",
+                        options: [
+                            "Dehydrogenases",
+                            "Ligases",
+                            "Lyases",
+                            "Transferases",
+                            "Isomerases"
+                        ],
+                        correct: 3,
+                        explanation: "Conjugation reactions (phase II metabolism) are typically catalyzed by transferases, which transfer groups like glucuronate, sulfate, methyl, or acetyl to xenobiotics to increase water solubility for excretion."
+                    }
+                ]
+            },
+            "clinical": {
+                title: "IV. Clinical Biochemistry",
+                questions: [
+                    {
+                        question: "The normal total bilirubin level in blood is:",
+                        options: [
+                            "3.5–5.5 µmol/L",
+                            "5.5–10.5 µmol/L",
+                            "8–20.5 µmol/L",
+                            "10.0–40.5 µmol/L",
+                            "50–70 µmol/L"
+                        ],
+                        correct: 2,
+                        explanation: "Normal total bilirubin concentration is 0.2-1.2 mg/dL, which converts to approximately 3.4-20.5 µmol/L. Levels above 20.5 µmol/L typically indicate hyperbilirubinemia and possible jaundice."
+                    },
+                    {
+                        question: "What pigments are formed as a result of hemoglobin breakdown?",
+                        options: [
+                            "Bile, feces, urine",
+                            "Plasma, skin, urine",
+                            "Blood, urine, skin",
+                            "Skin, bile, blood",
+                            "Feces, urine, skin"
+                        ],
+                        correct: 4,
+                        explanation: "Hemoglobin breakdown produces bilirubin, which is conjugated in the liver and excreted in bile. In the intestine, bilirubin is converted to urobilinogen and stercobilin, which color feces and urine. Jaundice causes yellow skin discoloration."
+                    },
+                    {
+                        question: "A three-day-old newborn was admitted with jaundice of the skin and cornea. Laboratory tests show an increase in indirect bilirubin, but AST, ALT, and alkaline phosphatase levels are normal. What is the most likely diagnosis?",
+                        options: [
+                            "Physiological jaundice",
+                            "Type I Crigler-Najjar syndrome",
+                            "Hemolytic disease of the newborn",
+                            "Biliary atresia",
+                            "Parenchymal jaundice"
+                        ],
+                        correct: 0,
+                        explanation: "Physiological jaundice of the newborn is common (60% of term infants). It results from immature hepatic UDP-glucuronyltransferase activity, causing unconjugated hyperbilirubinemia. Liver enzymes remain normal."
+                    },
+                    {
+                        question: "What is the cause of physiological jaundice in newborns?",
+                        options: [
+                            "Rh conflict between mother and child",
+                            "ABO incompatibility between mother and child",
+                            "Insufficient activity of UDP-glucuronyltransferase in the liver",
+                            "Decreased erythrocyte destruction in the first days after birth",
+                            "Formation of gallstones in the bile ducts"
+                        ],
+                        correct: 2,
+                        explanation: "Newborns have low activity of UDP-glucuronyltransferase, the enzyme that conjugates bilirubin to make it water-soluble. This, combined with increased erythrocyte breakdown, leads to transient unconjugated hyperbilirubinemia."
+                    },
+                    {
+                        question: "What are the main properties of direct bilirubin?",
+                        options: [
+                            "Toxic, water-soluble, unconjugated",
+                            "Non-toxic, water-soluble, conjugated",
+                            "Toxic, water-insoluble, conjugated",
+                            "Non-toxic, water-insoluble, conjugated",
+                            "Toxic, water-soluble, conjugated"
+                        ],
+                        correct: 1,
+                        explanation: "Direct (conjugated) bilirubin is water-soluble, non-toxic, and can be excreted in urine. Indirect (unconjugated) bilirubin is lipid-soluble, toxic to the CNS (kernicterus), and cannot be excreted in urine."
+                    },
+                    {
+                        question: "Direct bilirubin is formed as a result of conjugation with which substance?",
+                        options: [
+                            "Sulfuric acid",
+                            "Glucuronic acid",
+                            "Phosphoric acid",
+                            "Glycine",
+                            "Glutamine"
+                        ],
+                        correct: 1,
+                        explanation: "Bilirubin is conjugated with glucuronic acid by UDP-glucuronyltransferase in hepatocytes, forming bilirubin diglucuronide (direct bilirubin). This makes it water-soluble for biliary excretion."
+                    },
+                    {
+                        question: "What is the cause of hemolytic (prehepatic) jaundice?",
+                        options: [
+                            "Viral hepatitis",
+                            "Biliary atresia",
+                            "Incompatible blood transfusion",
+                            "Liver cirrhosis",
+                            "Gout"
+                        ],
+                        correct: 2,
+                        explanation: "Hemolytic jaundice results from increased red blood cell destruction (hemolysis), overwhelming the liver's capacity to conjugate bilirubin. Causes include incompatible transfusions, hemolytic anemias, malaria."
+                    },
+                    {
+                        question: "Parenchymal (hepatic) jaundice develops in:",
+                        options: [
+                            "Chronic hepatitis",
+                            "Pellagra",
+                            "Kidney stone formation",
+                            "Incompatible blood transfusion",
+                            "Gallstone disease"
+                        ],
+                        correct: 0,
+                        explanation: "Hepatocellular (parenchymal) jaundice occurs when liver disease (hepatitis, cirrhosis) impairs bilirubin uptake, conjugation, or secretion. Both conjugated and unconjugated bilirubin increase, with elevated liver enzymes."
+                    },
+                    {
+                        question: "What is the cause of mechanical (obstructive) jaundice?",
+                        options: [
+                            "Sickle cell anemia",
+                            "Viral hepatitis",
+                            "Gallstone disease",
+                            "Incompatible blood transfusion",
+                            "Liver diseases"
+                        ],
+                        correct: 2,
+                        explanation: "Obstructive jaundice results from bile duct obstruction (gallstones, tumors, strictures), preventing bilirubin excretion. Characterized by elevated conjugated bilirubin, alkaline phosphatase, and pale stools with dark urine."
+                    },
+                    {
+                        question: "A 3-year-old child on a playground complains of muscle pain and weakness, hospitalized for examination. Tests reveal mild hepatomegaly and cardiomegaly. Muscle biopsy contains a large number of cytoplasmic vacuoles containing neutral lipids. One-day fasting shows decreased blood glucose without corresponding ketone body formation; blood pH is normal. Which of the following diagnoses could explain this child's problems?",
+                        options: [
+                            "Bilirubin diglucuronide transporter deficiency",
+                            "Glucose-6-phosphatase deficiency",
+                            "Mitochondrial 3-hydroxy-3-methylglutaryl-CoA synthase deficiency",
+                            "Systemic carnitine deficiency",
+                            "Vitamin D deficiency"
+                        ],
+                        correct: 3,
+                        explanation: "Systemic carnitine deficiency impairs fatty acid transport into mitochondria, preventing ketogenesis and causing hypoketotic hypoglycemia during fasting. Lipid accumulates in muscles, liver, and heart."
+                    },
+                    {
+                        question: "A 25-year-old man visits a doctor complaining of abdominal cramps and diarrhea after consuming milk. What is the most likely cause of his problem?",
+                        options: [
+                            "Overgrowth of bacteria and yeasts in the large intestine",
+                            "Infection with intestinal parasite Giardia lamblia",
+                            "Deficiency of pancreatic amylase",
+                            "Deficiency of lactase in the small intestine",
+                            "Deficiency of isomaltase in the small intestine"
+                        ],
+                        correct: 3,
+                        explanation: "Lactose intolerance results from lactase deficiency in the small intestine. Undigested lactose draws water into the lumen (osmotic diarrhea) and is fermented by colonic bacteria, producing gas and cramps."
+                    },
+                    {
+                        question: "A breastfeeding infant begins to vomit frequently and lose weight. After several days, jaundice appears, the liver is enlarged, and cataracts are noticed in the lenses. These symptoms are most likely caused by a deficiency of",
+                        options: [
+                            "Galactose-1-phosphate uridyltransferase",
+                            "Lactase",
+                            "Glucose-6-phosphatase",
+                            "Galactokinase",
+                            "Aldolase B"
+                        ],
+                        correct: 0,
+                        explanation: "Galactosemia (galactose-1-phosphate uridyltransferase deficiency) causes accumulation of galactose-1-phosphate, leading to liver failure, jaundice, cataracts (galactitol accumulation in lens), and failure to thrive."
+                    },
+                    {
+                        question: "Liver biopsy was performed on a child with hepatomegaly and mild fasting hypoglycemia. Hepatocytes show accumulation of glycogen granules with residual single glucose molecules at branch points on the periphery of the granule. The most likely genetic defect is in the gene encoding:",
+                        options: [
+                            "α-1,4-phosphorylase",
+                            "α-1,4: α-1,4-transglycosylase",
+                            "Phosphoglucomutase",
+                            "α-1,6-glucosidase",
+                            "Lysosomal α-1,4-glucosidase"
+                        ],
+                        correct: 3,
+                        explanation: "Cori disease (type III glycogen storage disease) results from debranching enzyme (α-1,6-glucosidase) deficiency. Glycogen accumulates with short outer branches, causing hepatomegaly and mild hypoglycemia."
+                    },
+                    {
+                        question: "An 11-month-old child with a 'doll-like' round face, enlarged cheeks and abdomen, relatively thin limbs, lethargic and sleepy. Blood biochemical tests show glucose level after 4 hours of fasting is 2.2 mmol/L, elevated lactic acid, uric acid, and triglycerides. Due to high lipid content, the serum is turbid and milky. Deficiency of which enzyme can be suspected?",
+                        options: [
+                            "Glucose-6-phosphatase",
+                            "Hepatic glycogen phosphorylase",
+                            "Muscle glycogen phosphorylase",
+                            "Amylo-1,6-glucosidase ('debranching' enzyme)",
+                            "Amylo-1,4→1,6-glucosyltransferase ('branching' enzyme)"
+                        ],
+                        correct: 0,
+                        explanation: "von Gierke disease (type I glycogen storage disease) results from glucose-6-phosphatase deficiency. It causes severe fasting hypoglycemia, lactic acidosis, hyperuricemia, hypertriglyceridemia (milky serum), and hepatomegaly."
+                    },
+                    {
+                        question: "A 5-year-old child develops muscle weakness, cramps, and myoglobinuria during physical exertion. Blood glucose concentration is normal. Which enzyme is defective?",
+                        options: [
+                            "Muscle glycogen phosphorylase",
+                            "Glucose-6-phosphatase",
+                            "Amylo-1,6-glucosidase ('debranching' enzyme)",
+                            "Lysosomal α-glucosidase",
+                            "Hepatic glycogen phosphorylase"
+                        ],
+                        correct: 0,
+                        explanation: "McArdle disease (type V glycogen storage disease) results from muscle glycogen phosphorylase deficiency. Exercise intolerance, muscle cramps, and myoglobinuria occur due to inability to mobilize muscle glycogen."
+                    },
+                    {
+                        question: "A patient with liver cirrhosis. Which laboratory indicator will decrease first?",
+                        options: [
+                            "ALT",
+                            "AST",
+                            "Albumin",
+                            "GGT",
+                            "Alkaline phosphatase"
+                        ],
+                        correct: 2,
+                        explanation: "Albumin synthesis decreases early in liver cirrhosis due to impaired synthetic function. ALT and AST may be elevated initially but can normalize in advanced cirrhosis. Albumin has a half-life of 20 days."
+                    },
+                    {
+                        question: "A 5-year-old child was admitted to the hospital by ambulance with acute epigastric pain. From the history, it is known that the child ate a lot of fast food with parents the day before. Which biochemical marker is commonly used to diagnose pancreatic disorders in children?",
+                        options: [
+                            "Determination of trypsin in blood",
+                            "Determination of glucose in blood",
+                            "Determination of amylase in urine",
+                            "Determination of elastase in urine",
+                            "Determination of amylase in saliva"
+                        ],
+                        correct: 2,
+                        explanation: "Urinary amylase is a sensitive marker for acute pancreatitis in children. Serum amylase may be transiently elevated, but urinary amylase remains elevated longer. It's non-invasive and practical for pediatric patients."
+                    },
+                    {
+                        question: "A 35-year-old man was admitted after alcohol abuse with girdle pain—suspected acute pancreatitis. Which enzymes are most diagnostically significant?",
+                        options: [
+                            "ALT, AST",
+                            "LDH",
+                            "Alkaline phosphatase, GGT",
+                            "Lipase, amylase",
+                            "Gastrin"
+                        ],
+                        correct: 3,
+                        explanation: "Serum lipase and amylase are the primary diagnostic markers for acute pancreatitis. Lipase is more specific and remains elevated longer than amylase. Both are elevated in >90% of cases."
+                    },
+                    {
+                        question: "A 56-year-old man was admitted to the intensive care unit with chest pain lasting more than 3 hours, not relieved by nitroglycerin. Which myocardial infarction marker is most specific for this condition?",
+                        options: [
+                            "Troponins TnT and cTnI",
+                            "Myoglobin",
+                            "Creatine kinase MM",
+                            "Aspartate aminotransferase (AST)",
+                            "LDH1/LDH2"
+                        ],
+                        correct: 0,
+                        explanation: "Cardiac troponins (cTnI and cTnT) are the most specific and sensitive markers for myocardial infarction. They rise 3-12 hours after onset, peak at 24-48 hours, and remain elevated for 7-14 days."
+                    },
+                    {
+                        question: "Acute poisoning with heavy metals can be treated by:",
+                        options: [
+                            "Administration of diuretics",
+                            "Use of chelating (complex-forming) agents",
+                            "Hemodialysis",
+                            "All of the above",
+                            "None of the above"
+                        ],
+                        correct: 3,
+                        explanation: "Heavy metal poisoning (lead, mercury, arsenic) is treated with chelating agents (EDTA, dimercaprol, penicillamine) that bind metals for urinary excretion. Supportive measures include diuresis and hemodialysis in severe cases."
+                    }
+                ]
+            },
+            "lipid": {
+                title: "V. Lipid Metabolism",
+                questions: [
+                    {
+                        question: "The lipid bilayer of the cell membrane includes:",
+                        options: [
+                            "Phospholipids",
+                            "Triacylglycerols",
+                            "Cholesterol esters",
+                            "Free glycerol",
+                            "All of the above"
+                        ],
+                        correct: 0,
+                        explanation: "The lipid bilayer is primarily composed of phospholipids, with cholesterol interspersed. Triacylglycerols are storage lipids, not membrane components. Cholesterol esters are stored in lipid droplets."
+                    },
+                    {
+                        question: "What function do bile acids perform?",
+                        options: [
+                            "Synthesis of triglycerides",
+                            "Emulsification of lipids, micelle formation",
+                            "Inhibition of pancreatic lipase, micelle formation",
+                            "Denaturation of proteins, transport of lipids",
+                            "Activation of trypsin, synthesis of fats"
+                        ],
+                        correct: 1,
+                        explanation: "Bile acids emulsify dietary fats, increasing surface area for lipase action. They form mixed micelles with lipid digestion products, facilitating absorption in the small intestine."
+                    },
+                    {
+                        question: "Which of the following is metabolized by lipoprotein lipase (LPL) during intravascular lipolysis?",
+                        options: [
+                            "Chylomicrons",
+                            "VLDL (very low-density lipoproteins)",
+                            "LDL (low-density lipoproteins)",
+                            "Triacylglycerols",
+                            "HDL (high-density lipoproteins)"
+                        ],
+                        correct: 0,
+                        explanation: "Lipoprotein lipase hydrolyzes triglycerides in chylomicrons and VLDL, releasing fatty acids for tissue uptake. It's located on capillary endothelial surfaces, activated by apoC-II on the lipoproteins."
+                    },
+                    {
+                        question: "Insulin-induced lipoprotein lipase is necessary for the metabolism of which of the following particles?",
+                        options: [
+                            "Chylomicrons",
+                            "Intermediate-density lipoproteins (IDL)",
+                            "Low-density lipoproteins (LDL)",
+                            "Triacylglycerols",
+                            "Micelle"
+                        ],
+                        correct: 0,
+                        explanation: "Insulin stimulates lipoprotein lipase (LPL) expression in adipose tissue. LPL hydrolyzes triglycerides in chylomicrons and VLDL, releasing fatty acids for storage in adipocytes."
+                    },
+                    {
+                        question: "What is the activator of the process shown below? 8 Acetyl-CoA + ATP + 14 NADPH → palmitate + 8 HSCoA + nADP + nPi + 14 NADP",
+                        options: [
+                            "Acetyl-CoA",
+                            "Citrate",
+                            "Malonyl-CoA",
+                            "Malate",
+                            "Oxaloacetate"
+                        ],
+                        correct: 2,
+                        explanation: "Malonyl-CoA is the activated 2-carbon donor for fatty acid synthesis. It's formed from acetyl-CoA by acetyl-CoA carboxylase (biotin-dependent). Malonyl-CoA commits acetyl-CoA to fatty acid synthesis."
+                    },
+                    {
+                        question: "When adipose tissue stores triacylglycerides coming from the liver or intestine, glycolysis must also occur in adipocytes. Which of the following glycolytic products or intermediates is necessary for fat formation?",
+                        options: [
+                            "Glycerol",
+                            "Glucose-6-phosphate",
+                            "Pyruvate",
+                            "Acetyl-CoA",
+                            "Dihydroxyacetone phosphate"
+                        ],
+                        correct: 4,
+                        explanation: "Adipocytes lack glycerol kinase, so they cannot phosphorylate free glycerol. Instead, they convert dihydroxyacetone phosphate (from glycolysis) to glycerol-3-phosphate for triglyceride synthesis."
+                    },
+                    {
+                        question: "The role of carnitine in fatty acid metabolism:",
+                        options: [
+                            "Cofactor of acyl-CoA synthetase activating fatty acids.",
+                            "Serves as a substrate for the first stage of β-oxidation.",
+                            "Transports long-chain acyl-CoA into the mitochondria.",
+                            "Prevents the breakdown of fatty acids in the cytoplasm.",
+                            "Transports short-chain acyl-CoA into the cytoplasm."
+                        ],
+                        correct: 2,
+                        explanation: "Carnitine transports long-chain fatty acyl groups across the inner mitochondrial membrane via carnitine palmitoyltransferase I and II. This is the rate-limiting step for mitochondrial β-oxidation."
+                    },
+                    {
+                        question: "Which of the following enzymes is most important in the regulation of lipogenesis?",
+                        options: [
+                            "Acetyl-CoA carboxylase",
+                            "Medium-chain acyl-CoA dehydrogenase",
+                            "Short-chain enoyl reductase",
+                            "Long-chain enoyl hydratase",
+                            "3-Ketoacyl reductase"
+                        ],
+                        correct: 0,
+                        explanation: "Acetyl-CoA carboxylase catalyzes the rate-limiting step of fatty acid synthesis: conversion of acetyl-CoA to malonyl-CoA. It's regulated by phosphorylation/dephosphorylation, citrate activation, and palmitoyl-CoA inhibition."
+                    },
+                    {
+                        question: "Malonyl-CoA, the first intermediate product of fatty acid synthesis, is an important regulator of fatty acid metabolism because:",
+                        options: [
+                            "Its formation from acetyl-CoA and bicarbonate by acetyl-CoA carboxylase is the rate-limiting step of fatty acid synthesis.",
+                            "It prevents entry of fatty acyl groups into the mitochondrial matrix as a potent inhibitor of carnitine palmitoyltransferase-1.",
+                            "It prevents entry of fatty acyl groups into the mitochondrial matrix as a potent inhibitor of carnitine palmitoyltransferase-II.",
+                            "It prevents entry of fatty acyl groups into the mitochondrial matrix as a potent inhibitor of carnitine-acylcarnitine translocase.",
+                            "It inhibits synthesis of fatty acyl-CoA."
+                        ],
+                        correct: 1,
+                        explanation: "Malonyl-CoA inhibits carnitine palmitoyltransferase I (CPT-1), preventing fatty acyl-CoA entry into mitochondria. This coordinates fatty acid synthesis (fed state) with inhibition of fatty acid oxidation."
+                    },
+                    {
+                        question: "One cycle of β-oxidation includes four consecutive reactions:",
+                        options: [
+                            "Oxidation, dehydration, oxidation, cleavage",
+                            "Reduction, dehydrogenation, reduction, cleavage",
+                            "Dehydrogenation, hydration, dehydrogenation, cleavage",
+                            "Hydrogenation, dehydration, hydrogenation, cleavage",
+                            "Reduction, hydration, dehydrogenation, cleavage"
+                        ],
+                        correct: 2,
+                        explanation: "β-oxidation cycle: 1) Dehydrogenation (FAD-dependent), 2) Hydration, 3) Dehydrogenation (NAD-dependent), 4) Thiolytic cleavage (release of acetyl-CoA). Each cycle shortens fatty acid by 2 carbons."
+                    },
+                    {
+                        question: "β-oxidation of one molecule of C16 (palmitic acid) results in the formation of:",
+                        options: [
+                            "8 molecules of FADH2, 8 NADH and 8 molecules of acetyl-CoA",
+                            "7 molecules of FADH2, 7 NADH and 7 molecules of acetyl-CoA",
+                            "8 molecules of FADH2, 8 NADH and 7 molecules of acetyl-CoA",
+                            "7 molecules of FADH2, 8 NADH and 8 molecules of acetyl-CoA",
+                            "7 molecules of FADH2, 7 NADH and 8 molecules of acetyl-CoA"
+                        ],
+                        correct: 4,
+                        explanation: "Palmitate (C16) requires 7 β-oxidation cycles, producing 7 FADH2, 7 NADH, and 8 acetyl-CoA (7 cycles produce 7 acetyl-CoA + final cleavage of last 4-carbon unit yields 2 acetyl-CoA = 8 total)."
+                    },
+                    {
+                        question: "During fatty acid and cholesterol synthesis, acetyl-CoA is used. Which other substance is necessary for these processes?",
+                        options: [
+                            "NADPH2",
+                            "NADH2",
+                            "FMNH2",
+                            "FADH2",
+                            "CoQH2"
+                        ],
+                        correct: 0,
+                        explanation: "Fatty acid synthesis requires NADPH for reduction steps (provided by pentose phosphate pathway and malic enzyme). Cholesterol synthesis also requires NADPH for multiple reduction reactions."
+                    },
+                    {
+                        question: "What is the main product of fatty acid synthase?",
+                        options: [
+                            "Acetyl-CoA",
+                            "Oleate",
+                            "Palmitoyl-CoA",
+                            "Acetoacetate",
+                            "Palmitate"
+                        ],
+                        correct: 4,
+                        explanation: "Fatty acid synthase produces palmitate (C16:0) as its primary product. The enzyme complex performs all reactions of fatty acid synthesis: condensation, reduction, dehydration, reduction using malonyl-CoA."
+                    },
+                    {
+                        question: "A child is diagnosed with a congenital deficiency of medium-chain acyl-CoA dehydrogenase activity. Which of the following signs or symptoms will most likely appear in this child during fasting?",
+                        options: [
+                            "Hypolactacidemia",
+                            "Ketoacidosis",
+                            "Hyperglycemia",
+                            "Dicarboxylic acidemia",
+                            "Hyperchylomicronemia"
+                        ],
+                        correct: 3,
+                        explanation: "MCAD deficiency causes hypoketotic hypoglycemia during fasting. ω-oxidation in peroxisomes produces dicarboxylic acids (adipic, suberic acids) which appear in urine (dicarboxylic aciduria)."
+                    },
+                    {
+                        question: "A woman was admitted to the clinic with complaints of severe muscle weakness, pronounced hypoglycemia, and elevated triglyceride levels. Indicate the most probable cause of the indicated disorders.",
+                        options: [
+                            "Deficiency of fatty acid synthase",
+                            "Deficiency of carnitine",
+                            "Deficiency of biotin",
+                            "Deficiency of lipoprotein lipase",
+                            "Deficiency of apoprotein B1"
+                        ],
+                        correct: 1,
+                        explanation: "Carnitine deficiency impairs fatty acid transport into mitochondria, preventing β-oxidation. This leads to hypoglycemia (inability to use fats for energy), muscle weakness, and hypertriglyceridemia."
+                    },
+                    {
+                        question: "Necessary for cholesterol and fatty acid synthesis in hepatocytes:",
+                        options: [
+                            "Citrate shuttle",
+                            "Glycerophosphate shuttle",
+                            "Malate-aspartate shuttle",
+                            "Carnitine shuttle",
+                            "Adenine nucleotide shuttle"
+                        ],
+                        correct: 0,
+                        explanation: "Citrate carries acetyl groups from mitochondria to cytosol. Mitochondrial acetyl-CoA condenses with oxaloacetate to form citrate, which exits via citrate shuttle. Cytosolic ATP-citrate lyase regenerates acetyl-CoA."
+                    },
+                    {
+                        question: "Which of the following will be elevated in blood approximately 2 hours after consuming fatty food?",
+                        options: [
+                            "Chylomicrons",
+                            "High-density lipoproteins (HDL)",
+                            "Ketone bodies",
+                            "Non-esterified fatty acids (NEFA)",
+                            "Very low-density lipoproteins (VLDL)"
+                        ],
+                        correct: 0,
+                        explanation: "Chylomicrons appear in blood 1-2 hours after a fatty meal, peak at 4-6 hours, and are cleared within 10 hours. They cause postprandial lipemia (milky plasma)."
+                    },
+                    {
+                        question: "Which of the following will be elevated in blood approximately 4 hours after consuming fatty food?",
+                        options: [
+                            "Low-density lipoproteins (LDL)",
+                            "High-density lipoproteins (HDL)",
+                            "Ketone bodies",
+                            "Non-esterified fatty acids",
+                            "Very low-density lipoproteins (VLDL)"
+                        ],
+                        correct: 4,
+                        explanation: "VLDL transports endogenous triglycerides from liver to peripheral tissues. After a meal, dietary fatty acids are taken up by liver and incorporated into VLDL, which peaks 3-6 hours postprandially."
+                    },
+                    {
+                        question: "Hyperketonemia is dangerous because ketone bodies:",
+                        options: [
+                            "Are strong reducing agents and cause hypoglycemia.",
+                            "Lower blood pH upon accumulation, causing acidosis.",
+                            "Stimulate glycogen formation in the liver.",
+                            "Block β-oxidation of fatty acids.",
+                            "Increase ammonia concentration in the blood."
+                        ],
+                        correct: 1,
+                        explanation: "Ketone bodies (acetoacetate, β-hydroxybutyrate) are acids. Excessive production (diabetic ketoacidosis, alcoholic ketoacidosis) overwhelms buffering capacity, causing metabolic acidosis (pH < 7.35)."
+                    },
+                    {
+                        question: "After they are produced from acetyl-CoA in the liver, ketone bodies are mainly used for which process?",
+                        options: [
+                            "Excretion as waste products",
+                            "Energy generation in the liver",
+                            "Conversion to fatty acids for storage of energy",
+                            "Generation of energy in the tissues",
+                            "Generation of energy in red blood cells"
+                        ],
+                        correct: 3,
+                        explanation: "Ketone bodies are water-soluble fuels exported from liver to peripheral tissues (brain, muscle, heart) during fasting/starvation. The liver produces but cannot use ketone bodies (lacks thiophorase)."
+                    },
+                    {
+                        question: "Uncontrolled phagocytosis of oxidized LDL particles is the main stimulus for foam cell development and fatty streaks in the subendothelium of vessels. This process can be slowed by increased dietary intake of",
+                        options: [
+                            "Vitamin E",
+                            "Vitamin B6",
+                            "Vitamin D",
+                            "Vitamin B12",
+                            "Vitamin K"
+                        ],
+                        correct: 0,
+                        explanation: "Vitamin E (α-tocopherol) is a lipid-soluble antioxidant that prevents LDL oxidation. Oxidized LDL is taken up by macrophages to form foam cells, initiating atherosclerosis. Antioxidants may slow this process."
+                    },
+                    {
+                        question: "A patient with recurrent pancreatitis attacks in history, eruptive xanthomas, and elevated plasma triacylglyceride levels (2,000 mg/dL) associated with chylomicrons most likely has a deficiency of",
+                        options: [
+                            "Lipoprotein lipase",
+                            "LDL receptors",
+                            "HMG-CoA reductase",
+                            "apoB-48",
+                            "apoB-100 receptor"
+                        ],
+                        correct: 0,
+                        explanation: "Familial lipoprotein lipase deficiency (type I hyperlipoproteinemia) causes massive chylomicronemia (>1000 mg/dL triglycerides), eruptive xanthomas, lipemia retinalis, and recurrent pancreatitis."
+                    },
+                    {
+                        question: "Which enzyme is the regulatory enzyme in cholesterol biosynthesis?",
+                        options: [
+                            "Hydroxymethylglutaryl-CoA lyase",
+                            "Hydroxymethylglutaryl-CoA synthase",
+                            "Hydroxymethylglutaryl-CoA reductase",
+                            "Cholesteryl esterase",
+                            "Lipoprotein lipase"
+                        ],
+                        correct: 2,
+                        explanation: "HMG-CoA reductase catalyzes the rate-limiting step (HMG-CoA → mevalonate) and is highly regulated: feedback inhibition by cholesterol, transcriptional regulation, phosphorylation, and degradation."
+                    },
+                    {
+                        question: "The anti-cholesterolemic action of simvastatin is based on its efficacy as a competitive inhibitor of the rate-limiting enzyme in cholesterol biosynthesis. The usual product of the reaction catalyzed by this enzyme is",
+                        options: [
+                            "Squalene",
+                            "Methylmalonate",
+                            "Lanosterol",
+                            "Mevalonate",
+                            "Acetoacetate"
+                        ],
+                        correct: 3,
+                        explanation: "Statins inhibit HMG-CoA reductase, which converts HMG-CoA to mevalonate, the rate-limiting step in cholesterol synthesis. This upregulates LDL receptors, lowering plasma LDL cholesterol."
+                    },
+                    {
+                        question: "Which of the following proteins deficiency is associated with elevated levels of unesterified cholesterol and phosphatidylcholine after lipid intake?",
+                        options: [
+                            "Acyl-CoA: cholesterol acyltransferase (ACAT)",
+                            "Apolipoprotein A-1",
+                            "Apolipoprotein B48",
+                            "Apolipoprotein B100",
+                            "Lipoprotein lipase"
+                        ],
+                        correct: 1,
+                        explanation: "Apolipoprotein A-1 deficiency (Tangier disease) impairs HDL formation and reverse cholesterol transport. Cholesterol and phospholipids accumulate in tissues, causing orange tonsils, neuropathy, and hepatosplenomegaly."
+                    },
+                    {
+                        question: "A 35-year-old man with severe hypercholesterolemia has a family history of early death from cardiovascular diseases and strokes. Which of the following genes is most likely defective?",
+                        options: [
+                            "Apolipoprotein E",
+                            "LDL receptor",
+                            "Lipoprotein lipase",
+                            "PCSK9",
+                            "LCAT"
+                        ],
+                        correct: 1,
+                        explanation: "Familial hypercholesterolemia results from LDL receptor deficiency, causing impaired LDL clearance, elevated LDL cholesterol (often >190 mg/dL), tendon xanthomas, and premature atherosclerosis."
+                    },
+                    {
+                        question: "Which plasma lipoprotein is best described as synthesized in the intestinal mucosa, contains a high concentration of triacylglycerols, and is responsible for transporting dietary lipids in the circulation?",
+                        options: [
+                            "Chylomicrons",
+                            "High-density lipoproteins (HDL)",
+                            "Intermediate-density lipoproteins (IDL)",
+                            "Low-density lipoproteins (LDL)",
+                            "Very low-density lipoproteins (VLDL)"
+                        ],
+                        correct: 0,
+                        explanation: "Chylomicrons transport dietary (exogenous) triglycerides from intestine to tissues. They contain apoB-48, are largest and least dense, and are cleared rapidly after meals (2-10 hours)."
+                    },
+                    {
+                        question: "Which plasma lipoprotein is best described as synthesized in the liver, contains a high concentration of triacylglycerols, and is mainly removed from circulation by adipose tissue and muscles?",
+                        options: [
+                            "Chylomicrons",
+                            "High-density lipoproteins (HDL)",
+                            "Intermediate-density lipoproteins (IDL)",
+                            "Low-density lipoproteins (LDL)",
+                            "Very low-density lipoproteins (VLDL)"
+                        ],
+                        correct: 4,
+                        explanation: "VLDL transports endogenous triglycerides from liver to peripheral tissues. They contain apoB-100, are converted to IDL then LDL by lipoprotein lipase and hepatic lipase."
+                    },
+                    {
+                        question: "Which plasma lipoprotein is best described as formed in the bloodstream as a result of triacylglycerol removal from VLDL, contains apo B-100, and delivers cholesterol to extrahepatic tissues?",
+                        options: [
+                            "Chylomicrons",
+                            "High-density lipoproteins (HDL)",
+                            "Intermediate-density lipoproteins (IDL)",
+                            "Low-density lipoproteins (LDL)",
+                            "Very low-density lipoproteins (VLDL)"
+                        ],
+                        correct: 3,
+                        correct: 3,
+                        explanation: "LDL carries cholesterol from liver to peripheral tissues via LDL receptors. Elevated LDL is atherogenic. LDL is formed from VLDL via IDL and contains primarily cholesterol esters."
+                    },
+                    {
+                        question: "The lipotropic action of phospholipids consists in:",
+                        options: [
+                            "Protection of the liver from obesity",
+                            "Protection of the myocardium from obesity",
+                            "Acceleration of lipolysis",
+                            "Acceleration of lipid hydrolysis",
+                            "Acceleration of lipid excretion from the body"
+                        ],
+                        correct: 0,
+                        explanation: "Lipotropic substances (choline, methionine, inositol) prevent or reverse fatty liver by promoting phospholipid synthesis for VLDL assembly and export of triglycerides from the liver."
+                    },
+                    {
+                        question: "Cholesterol is a precursor of:",
+                        options: [
+                            "Vitamin D3, steroid hormones, bile acids",
+                            "Vitamin D2, thyroid hormones, bile acids",
+                            "Bile acids, vitamin E, steroid hormones",
+                            "Steroid hormones, amino acids, vitamin K",
+                            "Vitamin A, androgens, fatty acids"
+                        ],
+                        correct: 0,
+                        explanation: "Cholesterol is converted to: 1) Bile acids (in liver), 2) Steroid hormones (cortisol, aldosterone, sex hormones in adrenal glands and gonads), 3) Vitamin D (via 7-dehydrocholesterol in skin with UV light)."
+                    }
+                ]
+            },
+            "carbohydrate": {
+                title: "VI. Carbohydrate Metabolism",
+                questions: [
+                    {
+                        question: "Which of the following transporters increases glucose uptake in response to insulin?",
+                        options: [
+                            "Glut 1",
+                            "Glut 2",
+                            "Glut 3",
+                            "Glut 4"
+                        ],
+                        correct: 3,
+                        explanation: "GLUT4 is the insulin-responsive glucose transporter in muscle and adipose tissue. Insulin stimulates translocation of GLUT4 vesicles to the plasma membrane, increasing glucose uptake 10-20 fold."
+                    },
+                    {
+                        question: "What happens to blood glucose concentration after a carbohydrate meal?",
+                        options: [
+                            "Decreases to 3 mmol/L",
+                            "Increases to 6.5–7.2 mmol/L",
+                            "Remains within 4.5–5.5 mmol/L",
+                            "Falls below normal",
+                            "Remains within 3.4–6.1 mmol/L"
+                        ],
+                        correct: 4,
+                        explanation: "Normal postprandial glucose remains <7.8 mmol/L (140 mg/dL) in healthy individuals. Homeostatic mechanisms (insulin secretion, tissue uptake) prevent excessive hyperglycemia after meals."
+                    },
+                    {
+                        question: "Glycolysis is:",
+                        options: [
+                            "Anaerobic breakdown of glucose to lactate",
+                            "Anaerobic breakdown of glucose to acetate",
+                            "Breakdown of glucose to CO₂ and H₂O",
+                            "Anaerobic breakdown of glucose to pyruvate"
+                        ],
+                        correct: 3,
+                        explanation: "Glycolysis converts glucose to pyruvate. Under anaerobic conditions, pyruvate is reduced to lactate. Under aerobic conditions, pyruvate enters mitochondria for oxidation to acetyl-CoA."
+                    },
+                    {
+                        question: "What is the main role of glycolysis under aerobic conditions?",
+                        options: [
+                            "Production of a large amount of ATP",
+                            "Formation of pyruvate for subsequent oxidation in the Krebs cycle",
+                            "Synthesis of glycogen",
+                            "Formation of lactate",
+                            "Formation of ketone bodies"
+                        ],
+                        correct: 1,
+                        explanation: "Under aerobic conditions, glycolysis provides pyruvate for mitochondrial oxidation via PDH complex (to acetyl-CoA) and TCA cycle. This yields far more ATP (30-32 per glucose) than anaerobic glycolysis (2 ATP)."
+                    },
+                    {
+                        question: "How many moles of ATP are produced under aerobic conditions during complete oxidation of 1 mole of glucose?",
+                        options: [
+                            "2 ATP",
+                            "12 ATP",
+                            "36–38 ATP (30–32)",
+                            "2 GTP",
+                            "8 ATP"
+                        ],
+                        correct: 2,
+                        explanation: "Complete glucose oxidation yields ~30-32 ATP: glycolysis (2 ATP, 2 NADH), PDH (2 NADH), TCA cycle (2 GTP, 6 NADH, 2 FADH2). NADH yields ~2.5 ATP, FADH2 ~1.5 ATP in oxidative phosphorylation."
+                    },
+                    {
+                        question: "During anaerobic glucose oxidation, one molecule of glucose produces:",
+                        options: [
+                            "2 molecules of pyruvate + 3 ATP",
+                            "2 molecules of lactate + 2 ATP",
+                            "Acetyl-CoA + 12 ATP",
+                            "One molecule of pyruvate + 2 ATP",
+                            "One molecule of lactate + ATP"
+                        ],
+                        correct: 1,
+                        explanation: "Anaerobic glycolysis: glucose → 2 lactate + 2 ATP (net). Lactate dehydrogenase regenerates NAD+ from NADH, allowing glycolysis to continue without mitochondrial oxidation."
+                    },
+                    {
+                        question: "The Cori cycle provides:",
+                        options: [
+                            "Conversion of glucose to glycogen in muscles",
+                            "Utilization of lactate from muscles and glucose synthesis in the liver",
+                            "Direct ATP synthesis in muscles",
+                            "Breakdown of fatty acids in the liver"
+                        ],
+                        correct: 1,
+                        explanation: "Cori cycle: lactate produced by anaerobic glycolysis in muscles travels to liver, where it's converted to glucose via gluconeogenesis. Glucose returns to muscles, completing the cycle."
+                    },
+                    {
+                        question: "What is gluconeogenesis?",
+                        options: [
+                            "The process of glycogen breakdown to glucose",
+                            "Synthesis of glucose from non-carbohydrate precursors",
+                            "Synthesis of amino acids from glucose",
+                            "Breakdown of glucose to ATP",
+                            "Synthesis of lipids from glucose"
+                        ],
+                        correct: 1,
+                        explanation: "Gluconeogenesis synthesizes glucose from precursors like lactate, glycerol, and glucogenic amino acids (especially alanine). It occurs mainly in liver during fasting to maintain blood glucose."
+                    },
+                    {
+                        question: "Which organ is primary for maintaining normal blood glucose levels?",
+                        options: [
+                            "Heart",
+                            "Liver",
+                            "Muscles",
+                            "Pancreas",
+                            "Brain"
+                        ],
+                        correct: 1,
+                        explanation: "The liver maintains glucose homeostasis via glycogenolysis, gluconeogenesis, and glycogenesis. It releases glucose during fasting and stores it after meals. Pancreas regulates via insulin/glucagon."
+                    },
+                    {
+                        question: "What is the normal fasting blood glucose level in an adult?",
+                        options: [
+                            "2.5 – 3.5 mmol/L",
+                            "3.4 – 6.1 mmol/L",
+                            "6.5 – 7.5 mmol/L",
+                            "7.5 – 9.0 mmol/L",
+                            "9.0 – 15.0 mmol/L"
+                        ],
+                        correct: 1,
+                        explanation: "Normal fasting plasma glucose is 3.9-5.6 mmol/L (70-100 mg/dL). Impaired fasting glucose is 5.6-6.9 mmol/L (100-125 mg/dL). Diabetes is diagnosed at ≥7.0 mmol/L (126 mg/dL)."
+                    },
+                    {
+                        question: "Which mechanism does not participate in maintaining normal blood glucose levels?",
+                        options: [
+                            "Gluconeogenesis",
+                            "Glycogenolysis",
+                            "Pentose phosphate pathway",
+                            "Glycogenesis"
+                        ],
+                        correct: 2,
+                        correct: 2,
+                        explanation: "Pentose phosphate pathway produces NADPH (for biosynthesis) and ribose-5-phosphate (for nucleotides), but does not directly regulate blood glucose. Glycogenesis stores glucose, glycogenolysis releases it, gluconeogenesis synthesizes it."
+                    },
+                    {
+                        question: "After a morning run, a 29-year-old man eats a full American breakfast consisting of cereals, eggs, sausages, donuts, and coffee with cream and sugar. Which of the following compounds is most likely activated in his liver after breakfast?",
+                        options: [
+                            "Cytoplasmic PEP carboxykinase",
+                            "GLUT-4 plasma membrane transporter",
+                            "Cytoplasmic phosphofructokinase-2",
+                            "Mitochondrial carnitine transporter",
+                            "Cytoplasmic glycogen phosphorylase"
+                        ],
+                        correct: 2,
+                        explanation: "PFK-2 produces fructose-2,6-bisphosphate, a potent activator of PFK-1 (glycolysis) and inhibitor of fructose-1,6-bisphosphatase (gluconeogenesis). Insulin activates PFK-2 after a carbohydrate-rich meal."
+                    },
+                    {
+                        question: "Which of the following statements is correct?",
+                        options: [
+                            "Glucose-1-phosphate can be hydrolyzed to free glucose in the liver.",
+                            "Glucose-6-phosphate can be formed from glucose but not from glycogen.",
+                            "Glucose-6-phosphate cannot be converted to glucose-1-phosphate in the liver.",
+                            "Glucose-6-phosphate is formed from glycogen by glycogen phosphorylase.",
+                            "In the liver and erythrocytes, glucose-6-phosphate can enter either glycolysis or the pentose phosphate pathway."
+                        ],
+                        correct: 4,
+                        explanation: "Glucose-6-phosphate is a key branch point metabolite. In liver, it can be: 1) Hydrolyzed to glucose (by glucose-6-phosphatase), 2) Converted to glycogen, 3) Enter glycolysis, 4) Enter pentose phosphate pathway."
+                    },
+                    {
+                        question: "Which of the following statements about glycogen metabolism is correct?",
+                        options: [
+                            "Glycogen is synthesized in the liver in the fed state and then exported to other tissues as low-density lipoproteins.",
+                            "Glycogen stores in liver and muscles satisfy the body's energy needs for several days of prolonged fasting.",
+                            "The liver synthesizes more glycogen when glucose concentration in the portal vein is high, due to the activity of liver glucokinase.",
+                            "Muscles synthesize glycogen in the fed state because glycogen phosphorylase is activated in response to insulin.",
+                            "Glycogen concentration in plasma increases in the fed state."
+                        ],
+                        correct: 2,
+                        explanation: "Hepatic glucokinase has high Km (low affinity) for glucose, so it's active mainly when portal glucose is high after meals. This directs glucose to glycogen synthesis. Insulin also activates glycogen synthase."
+                    },
+                    {
+                        question: "In glycolysis, the conversion of 1 mole fructose-1,6-bisphosphate into 2 moles pyruvate results in the formation of:",
+                        options: [
+                            "1 mole NAD⁺ and 2 moles ATP",
+                            "1 mole NADH and 1 mole ATP",
+                            "2 moles NAD⁺ and 4 moles ATP",
+                            "2 moles NADH and 2 moles ATP",
+                            "2 moles NADH and 4 moles ATP"
+                        ],
+                        correct: 3,
+                        explanation: "From fructose-1,6-bisphosphate to pyruvate: 1) Glyceraldehyde-3-phosphate dehydrogenase produces 2 NADH (one per triose), 2) Phosphoglycerate kinase and pyruvate kinase produce 4 ATP (gross), but 2 ATP were invested earlier, net = 2 ATP."
+                    },
+                    {
+                        question: "Which of the following sources provides the main fuel for muscle contraction during short-term maximal effort?",
+                        options: [
+                            "Muscle glycogen",
+                            "Muscle triacylglycerol stores",
+                            "Plasma glucose",
+                            "Plasma non-esterified fatty acids",
+                            "Plasma triacylglycerols (VLDL)"
+                        ],
+                        correct: 0,
+                        explanation: "During high-intensity exercise (sprinting), muscles rely on anaerobic glycolysis from glycogen stores. This provides rapid ATP without oxygen but produces lactate, causing fatigue."
+                    },
+                    {
+                        question: "The significance of the pentose phosphate pathway is that it is a source of:",
+                        options: [
+                            "Pentoses and energy in the form of NADH2",
+                            "Energy in the form of NADH2 and NADPH2",
+                            "Glucose and pentoses",
+                            "Energy in the form of ATP and pentoses",
+                            "NADPH2 and ribose"
+                        ],
+                        correct: 4,
+                        explanation: "Pentose phosphate pathway produces: 1) NADPH for reductive biosynthesis (fatty acids, cholesterol, glutathione reduction), 2) Ribose-5-phosphate for nucleotide synthesis. It does not produce ATP."
+                    },
+                    {
+                        question: "What consequence is observed in erythrocytes in glucose-6-phosphate dehydrogenase deficiency?",
+                        options: [
+                            "Increased resistance to oxidative stress",
+                            "Increased sensitivity to oxidative stress",
+                            "Increased hemoglobin synthesis",
+                            "Impairment of phagocytosis"
+                        ],
+                        correct: 1,
+                        explanation: "G6PD deficiency impairs NADPH production, reducing glutathione regeneration. This decreases antioxidant capacity, leading to hemolytic anemia when exposed to oxidative stress (drugs, infections, fava beans)."
+                    },
+                    {
+                        question: "A 44-year-old man from Limpopo province in South Africa, residing in the USA, undergoing antibiotic therapy for a urinary tract infection, experiences self-limiting episodes of hemolysis, back pain, and jaundice. Peripheral blood smear shows nonspherocytic, normocytic anemia, and Heinz bodies are found in some of his erythrocytes. A genetic defect in which enzyme most likely leads to hemolytic anemia?",
+                        options: [
+                            "Homocysteine methyltransferase",
+                            "Pyruvate kinase",
+                            "Dihydrofolate reductase",
+                            "Ferrochelatase",
+                            "Glucose-6-phosphate dehydrogenase"
+                        ],
+                        correct: 4,
+                        explanation: "G6PD deficiency is X-linked and common in malaria-endemic regions (Africa, Mediterranean, Southeast Asia). Oxidative drugs (sulfonamides, antimalarials) trigger hemolysis in deficient individuals."
+                    },
+                    {
+                        question: "A 55-year-old alcoholic was brought to the emergency department. Thiamine injection and glucose administration were given. Which of the following enzymes is thiamine-dependent and necessary for glucose oxidation in the brain?",
+                        options: [
+                            "Transketolase",
+                            "Transaldolase",
+                            "Succinyl-CoA thiokinase",
+                            "Acetyl-CoA carboxylase",
+                            "Pyruvate dehydrogenase"
+                        ],
+                        correct: 4,
+                        explanation: "Pyruvate dehydrogenase requires thiamine pyrophosphate (TPP) as cofactor. It converts pyruvate to acetyl-CoA for TCA cycle. Thiamine deficiency (beriberi, Wernicke-Korsakoff) impairs glucose oxidation in brain."
+                    },
+                    {
+                        question: "In a patient undergoing therapeutic fasting, normal blood glucose levels are maintained mainly by gluconeogenesis. From which amino acid is glucose most actively synthesized in the human liver?",
+                        options: [
+                            "Valine",
+                            "Lysine",
+                            "Alanine",
+                            "Glutamic acid",
+                            "Leucine"
+                        ],
+                        correct: 2,
+                        explanation: "Alanine is the major gluconeogenic amino acid via glucose-alanine cycle: muscles release alanine (from pyruvate transamination), liver converts it to glucose. Alanine accounts for ~30% of gluconeogenesis during fasting."
+                    }
+                ]
+            },
+            "enzymology": {
+                title: "VII. Enzymology",
+                questions: [
+                    {
+                        question: "Which one of the following enzymes uses molecular oxygen as a hydrogen acceptor?",
+                        options: [
+                            "Cytochrome c oxidase",
+                            "Isocitrate dehydrogenase",
+                            "Homogentisate dioxygenase",
+                            "Catalase",
+                            "Superoxide dismutase"
+                        ],
+                        correct: 0,
+                        explanation: "Cytochrome c oxidase (Complex IV) transfers electrons from cytochrome c to molecular oxygen, reducing it to water. It's the terminal oxidase of the mitochondrial electron transport chain."
+                    },
+                    {
+                        question: "Competitive enzyme inhibitors change:",
+                        options: [
+                            "Vmax of the catalyzed reaction",
+                            "Km of the reaction",
+                            "Both Vmax and Km of the reaction",
+                            "Substrate specificity",
+                            "Primary structure of the enzyme"
+                        ],
+                        correct: 1,
+                        explanation: "Competitive inhibitors increase apparent Km (decrease substrate affinity) without changing Vmax. They compete with substrate for the active site and can be overcome by high substrate concentration."
+                    },
+                    {
+                        question: "Which part of the enzyme molecule is responsible for binding the substrate?",
+                        options: [
+                            "Catalytic site",
+                            "Cofactor",
+                            "Allosteric site",
+                            "Active site",
+                            "Coenzyme"
+                        ],
+                        correct: 3,
+                        explanation: "The active site contains residues that bind substrate and catalyze its conversion to product. It has precise 3D arrangement (induced fit) complementary to the transition state of the reaction."
+                    },
+                    {
+                        question: "The rate of an enzymatic reaction cannot be influenced by the following factors:",
+                        options: [
+                            "Enzyme concentration",
+                            "Concentration of intermediate reaction products",
+                            "pH of the medium",
+                            "Temperature",
+                            "Action of inhibitors or activators"
+                        ],
+                        correct: 1,
+                        explanation: "Enzyme kinetics depends on substrate concentration, enzyme concentration, pH, temperature, and effectors. Intermediate products typically don't accumulate and don't directly affect the measured initial velocity."
+                    },
+                    {
+                        question: "Body temperature above 40°C is dangerous for human life:",
+                        options: [
+                            "Due to denaturation of many proteins, including enzymes",
+                            "Due to a sharp increase in the rate of enzymatic reactions",
+                            "Due to depletion of substrate stores",
+                            "Due to overfilling of cells with products of enzymatic reactions",
+                            "Due to thermal destruction of non-protein enzyme ligands"
+                        ],
+                        correct: 0,
+                        explanation: "Hyperthermia (>40°C) causes protein denaturation, especially enzymes with optimal activity at 37°C. This disrupts metabolic pathways, membrane function, and can lead to multi-organ failure."
+                    },
+                    {
+                        question: "A shift in pH in either direction from the optimum:",
+                        options: [
+                            "Changes enzyme conformation",
+                            "Does not change enzyme conformation",
+                            "Changes the primary structure of the enzyme",
+                            "Breaks disulfide bonds in the enzyme",
+                            "Breaks peptide bonds in the enzyme"
+                        ],
+                        correct: 0,
+                        explanation: "pH changes alter ionization states of amino acid side chains, affecting enzyme conformation, substrate binding, and catalytic activity. Extreme pH can cause irreversible denaturation."
+                    },
+                    {
+                        question: "Which of the following is NOT an activity of cytochrome P450?",
+                        options: [
+                            "Activation of vitamin D",
+                            "Hydroxylation of steroid hormone precursors",
+                            "Hydroxylation of xenobiotics",
+                            "Hydroxylation of retinoic acid",
+                            "Methylation of xenobiotics"
+                        ],
+                        correct: 4,
+                        explanation: "Cytochrome P450 enzymes catalyze hydroxylation reactions (monooxygenases), not methylation. They hydroxylate: 1) Drugs/xenobiotics (phase I metabolism), 2) Steroid hormones, 3) Vitamin D, 4) Retinoic acid, 5) Fatty acids."
+                    },
+                    {
+                        question: "A student takes some tablets she is offered at a disco, and without asking what they are she swallows them. A short time later she starts to hyperventilate, and becomes very hot. What is the most likely action of the tablets she has taken?",
+                        options: [
+                            "An inhibitor of mitochondrial ATP synthesis",
+                            "An inhibitor of mitochondrial electron transport",
+                            "An inhibitor of the transport of ADP into mitochondria to be phosphorylated",
+                            "An inhibitor of the transport of ATP out of mitochondria into the cytosol",
+                            "An uncoupler of mitochondrial electron transport and oxidative phosphorylation"
+                        ],
+                        correct: 4,
+                        explanation: "Uncouplers (like 2,4-dinitrophenol) dissipate the proton gradient across the inner mitochondrial membrane, allowing electron transport without ATP synthesis. This increases oxygen consumption and heat production (hyperthermia)."
+                    }
+                ]
+            }
+        };
+
+        // State management
+        let currentTopic = "nucleotide";
+        let currentQuestionIndex = 0;
+        let selectedOption = null;
+        let answered = false;
+        let userAnswers = {};
+        let stats = {
+            correct: 0,
+            incorrect: 0,
+            skipped: 0
+        };
+
+        // DOM Elements
+        const topicList = document.getElementById('topicList');
+        const questionNumber = document.getElementById('questionNumber');
+        const questionText = document.getElementById('questionText');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const feedbackSection = document.getElementById('feedbackSection');
+        const feedbackTitle = document.getElementById('feedbackTitle');
+        const correctAnswer = document.getElementById('correctAnswer');
+        const explanation = document.getElementById('explanation');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const correctCount = document.getElementById('correctCount');
+        const incorrectCount = document.getElementById('incorrectCount');
+        const skippedCount = document.getElementById('skippedCount');
+
+        // Initialize the application
+        function init() {
+            loadTopics();
+            loadQuestion();
+            updateProgress();
+            updateStats();
+            loadStateFromStorage();
+            
+            // Event listeners
+            prevBtn.addEventListener('click', goToPreviousQuestion);
+            nextBtn.addEventListener('click', goToNextQuestion);
+            resetBtn.addEventListener('click', resetProgress);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', handleKeyPress);
+        }
+
+        // Load topics into sidebar
+        function loadTopics() {
+            topicList.innerHTML = '';
+            
+            for (const topicId in biochemistryMCQs) {
+                const topic = biochemistryMCQs[topicId];
+                const topicItem = document.createElement('li');
+                topicItem.className = 'topic-item';
+                if (topicId === currentTopic) {
+                    topicItem.classList.add('active');
+                }
+                
+                topicItem.innerHTML = `
+                    ${topic.title}
+                    <span class="count">${topic.questions.length}</span>
+                `;
+                
+                topicItem.addEventListener('click', () => {
+                    // Remove active class from all topics
+                    document.querySelectorAll('.topic-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked topic
+                    topicItem.classList.add('active');
+                    
+                    // Change topic and load first question
+                    currentTopic = topicId;
+                    currentQuestionIndex = 0;
+                    selectedOption = null;
+                    answered = false;
+                    loadQuestion();
+                    updateProgress();
+                });
+                
+                topicList.appendChild(topicItem);
+            }
+        }
+
+        // Load current question
+        function loadQuestion() {
+            const topic = biochemistryMCQs[currentTopic];
+            const question = topic.questions[currentQuestionIndex];
+            
+            // Update question number and text
+            questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${topic.questions.length} (${topic.title})`;
+            questionText.textContent = question.question;
+            
+            // Clear previous options
+            optionsContainer.innerHTML = '';
+            
+            // Reset feedback
+            feedbackSection.classList.remove('show');
+            
+            // Reset selected option
+            selectedOption = null;
+            answered = false;
+            
+            // Create option elements
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                
+                // Check if this question was already answered
+                const questionKey = `${currentTopic}_${currentQuestionIndex}`;
+                if (userAnswers[questionKey]) {
+                    if (userAnswers[questionKey].selected === index) {
+                        optionElement.classList.add('selected');
+                        selectedOption = index;
+                        answered = true;
+                        
+                        // If already answered, show correct/incorrect state
+                        if (userAnswers[questionKey].answered) {
+                            if (index === question.correct) {
+                                optionElement.classList.add('correct');
+                            } else {
+                                optionElement.classList.add('incorrect');
+                            }
+                        }
+                    }
+                    
+                    // Highlight correct answer if already answered
+                    if (userAnswers[questionKey].answered && index === question.correct) {
+                        optionElement.classList.add('correct');
+                    }
+                }
+                
+                optionElement.innerHTML = `
+                    <span class="option-label">${String.fromCharCode(65 + index)}</span>
+                    <span class="option-text">${option}</span>
+                `;
+                
+                // Add click event if not already answered
+                if (!answered) {
+                    optionElement.addEventListener('click', () => selectOption(index, optionElement));
+                } else {
+                    optionElement.style.cursor = 'default';
+                }
+                
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Update button states
+            updateButtonStates();
+            
+            // If already answered, show feedback
+            const questionKey = `${currentTopic}_${currentQuestionIndex}`;
+            if (userAnswers[questionKey] && userAnswers[questionKey].answered) {
+                showFeedback();
+            }
+        }
+
+        // Select an option (immediate feedback)
+        function selectOption(index, element) {
+            if (answered) return;
+            
+            const topic = biochemistryMCQs[currentTopic];
+            const question = topic.questions[currentQuestionIndex];
+            const questionKey = `${currentTopic}_${currentQuestionIndex}`;
+            
+            // Select clicked option
+            selectedOption = index;
+            answered = true;
+            
+            // Disable all options
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.style.cursor = 'default';
+                opt.removeEventListener('click', selectOption);
+            });
+            
+            // Mark selected option
+            element.classList.add('selected');
+            
+            // Check if correct
+            const isCorrect = (index === question.correct);
+            
+            // Store user answer
+            userAnswers[questionKey] = {
+                selected: index,
+                answered: true,
+                correct: isCorrect
+            };
+            
+            // Update stats
+            if (isCorrect) {
+                stats.correct++;
+                element.classList.add('correct');
+            } else {
+                stats.incorrect++;
+                element.classList.add('incorrect');
+                
+                // Highlight correct answer
+                document.querySelectorAll('.option')[question.correct].classList.add('correct');
+            }
+            
+            // Show feedback immediately
+            showFeedback();
+            
+            // Update stats and save state
+            updateStats();
+            updateProgress();
+            saveStateToStorage();
+            
+            // Update button states
+            updateButtonStates();
+        }
+
+        // Show feedback with explanation
+        function showFeedback() {
+            const topic = biochemistryMCQs[currentTopic];
+            const question = topic.questions[currentQuestionIndex];
+            const questionKey = `${currentTopic}_${currentQuestionIndex}`;
+            const userAnswer = userAnswers[questionKey];
+            
+            if (!userAnswer) return;
+            
+            // Update feedback title
+            if (userAnswer.correct) {
+                feedbackTitle.innerHTML = '<span class="icon">✓</span> Correct!';
+                feedbackTitle.className = 'feedback-title correct';
+            } else {
+                feedbackTitle.innerHTML = '<span class="icon">✗</span> Incorrect';
+                feedbackTitle.className = 'feedback-title incorrect';
+            }
+            
+            // Show correct answer
+            const correctOptionLetter = String.fromCharCode(65 + question.correct);
+            const correctOptionText = question.options[question.correct];
+            correctAnswer.innerHTML = `<strong>Correct Answer: ${correctOptionLetter}. ${correctOptionText}</strong>`;
+            
+            // Show explanation
+            explanation.textContent = question.explanation;
+            
+            // Show feedback section
+            feedbackSection.classList.add('show');
+        }
+
+        // Go to previous question
+        function goToPreviousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+                updateProgress();
+            }
+        }
+
+        // Go to next question
+        function goToNextQuestion() {
+            const topic = biochemistryMCQs[currentTopic];
+            
+            // If at last question, go to first question
+            if (currentQuestionIndex < topic.questions.length - 1) {
+                currentQuestionIndex++;
+            } else {
+                currentQuestionIndex = 0;
+            }
+            
+            loadQuestion();
+            updateProgress();
+        }
+
+        // Update button states
+        function updateButtonStates() {
+            const topic = biochemistryMCQs[currentTopic];
+            
+            // Previous button
+            prevBtn.disabled = currentQuestionIndex === 0;
+            
+            // Next button text
+            if (currentQuestionIndex === topic.questions.length - 1) {
+                nextBtn.textContent = 'Start Over';
+            } else {
+                nextBtn.textContent = 'Next Question';
+            }
+        }
+
+        // Update progress bar and text
+        function updateProgress() {
+            const topic = biochemistryMCQs[currentTopic];
+            const totalQuestions = topic.questions.length;
+            
+            // Calculate answered questions in this topic
+            let answeredCount = 0;
+            for (let i = 0; i < totalQuestions; i++) {
+                const questionKey = `${currentTopic}_${i}`;
+                if (userAnswers[questionKey] && userAnswers[questionKey].answered) {
+                    answeredCount++;
+                }
+            }
+            
+            // Update progress bar
+            const percentage = (answeredCount / totalQuestions) * 100;
+            progressFill.style.width = `${percentage}%`;
+            
+            // Update progress text
+            progressText.textContent = `${answeredCount} of ${totalQuestions} questions completed`;
+        }
+
+        // Update statistics
+        function updateStats() {
+            correctCount.textContent = stats.correct;
+            incorrectCount.textContent = stats.incorrect;
+            
+            // Calculate unanswered
+            let totalAnswered = stats.correct + stats.incorrect;
+            let totalQuestions = 0;
+            for (const topicId in biochemistryMCQs) {
+                totalQuestions += biochemistryMCQs[topicId].questions.length;
+            }
+            skippedCount.textContent = totalQuestions - totalAnswered;
+        }
+
+        // Reset progress
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+                currentQuestionIndex = 0;
+                selectedOption = null;
+                answered = false;
+                userAnswers = {};
+                stats = {
+                    correct: 0,
+                    incorrect: 0,
+                    skipped: 0
+                };
+                
+                loadQuestion();
+                updateProgress();
+                updateStats();
+                saveStateToStorage();
+            }
+        }
+
+        // Handle keyboard navigation
+        function handleKeyPress(e) {
+            // Number keys 1-5 for selecting options
+            if (!answered && e.key >= '1' && e.key <= '5') {
+                const optionIndex = parseInt(e.key) - 1;
+                const topic = biochemistryMCQs[currentTopic];
+                if (optionIndex < topic.questions[currentQuestionIndex].options.length) {
+                    const optionElement = document.querySelectorAll('.option')[optionIndex];
+                    selectOption(optionIndex, optionElement);
+                }
+            }
+            
+            // Arrow keys for navigation
+            if (e.key === 'ArrowLeft') {
+                goToPreviousQuestion();
+            } else if (e.key === 'ArrowRight') {
+                goToNextQuestion();
+            }
+        }
+
+        // Save state to localStorage
+        function saveStateToStorage() {
+            const state = {
+                currentTopic,
+                currentQuestionIndex,
+                userAnswers,
+                stats
+            };
+            localStorage.setItem('biochemistryMCQState', JSON.stringify(state));
+        }
+
+        // Load state from localStorage
+        function loadStateFromStorage() {
+            const savedState = localStorage.getItem('biochemistryMCQState');
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                currentTopic = state.currentTopic || currentTopic;
+                currentQuestionIndex = state.currentQuestionIndex || 0;
+                userAnswers = state.userAnswers || {};
+                stats = state.stats || stats;
+                
+                // Update UI
+                loadTopics();
+                loadQuestion();
+                updateProgress();
+                updateStats();
+            }
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
